@@ -24,21 +24,21 @@ class Weather extends Equatable {
 
   @override
   String toString() {
-    return 'Weather(weatherStateName: $weatherStateName, weatherStateAbbr: $weatherStateAbbr, created: $created, minTemp: $minTemp, maxTemp: $maxTemp, theTemp: $theTemp, title: $title, woeid: $woeid, lastUpdated: $lastUpdated)';
+    return 'Weather(weatherStateName: $weatherStateName, weatherStateAbbr: $weatherStateAbbr, created: $created, minTemp: $minTemp, maxTemp: $maxTemp, theTemp: $theTemp, title: $title, woeid: $woeid, lastUpdated: $lastUpdated,)';
   }
 
   factory Weather.fromJson(Map<String, dynamic> json) {
-    final consolidateWeather = json['consolidate_weather'][0];
+    final consolidatedWeather = json['consolidated_weather'][0];
 
     return Weather(
-      weatherStateName: consolidateWeather['weather_state_name'],
-      weatherStateAbbr: consolidateWeather['weather_state_abbr'],
-      created: consolidateWeather['create'],
-      minTemp: consolidateWeather['min_temp'],
-      maxTemp: consolidateWeather['max_temp'],
-      theTemp: consolidateWeather['the_temp'],
-      title: consolidateWeather['title'],
-      woeid: consolidateWeather['woeid'],
+      weatherStateName: consolidatedWeather['weather_state_name'],
+      weatherStateAbbr: consolidatedWeather['weather_state_abbr'],
+      created: consolidatedWeather['created'],
+      minTemp: consolidatedWeather['min_temp'],
+      maxTemp: consolidatedWeather['max_temp'],
+      theTemp: consolidatedWeather['the_temp'],
+      title: json['title'],
+      woeid: json['woeid'],
       lastUpdated: DateTime.now(),
     );
   }
@@ -69,4 +69,7 @@ class Weather extends Equatable {
       lastUpdated,
     ];
   }
+
+  @override
+  bool get stringify => true;
 }

@@ -5,7 +5,7 @@ String httpErrorHandler(http.Response response) {
   final reasonPhrase = response.reasonPhrase;
 
   final String errorMessage =
-      'Request failed\nStatusCode: $statusCode\nReason: $reasonPhrase';
+      'Request failed\nStatus Code: $statusCode\nReason: $reasonPhrase';
 
   return errorMessage;
 }

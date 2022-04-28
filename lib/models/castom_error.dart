@@ -6,9 +6,12 @@ class CustomError extends Equatable {
     this.errMsg = '',
   });
 
-  @override
-  List<Object> get props => [errMsg];
+  // @override
+  // bool get stringify => true;
 
   @override
   String toString() => 'CustomError(errMsg: $errMsg)';
+
+  @override
+  List<Object> get props => [errMsg];
 }

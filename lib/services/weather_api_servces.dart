@@ -13,12 +13,13 @@ class WeatherApiServices {
 
   Future<int> getWoeid(String city) async {
     final Uri uri = Uri(
-        scheme: 'https',
-        host: kHost,
-        path: '/api/location/search/',
-        queryParameters: {
-          'query': city,
-        });
+      scheme: 'https',
+      host: kHost,
+      path: '/api/location/search/',
+      queryParameters: {
+        'query': city,
+      },
+    );
 
     try {
       final http.Response response = await http.get(uri);
@@ -37,7 +38,7 @@ class WeatherApiServices {
         throw WeatherException(
             'There are multiple candidates for $city\nPlease specify furthur!');
       }
-
+      print(responseBody);
       return responseBody[0]['woeid'];
     } catch (e) {
       rethrow;
