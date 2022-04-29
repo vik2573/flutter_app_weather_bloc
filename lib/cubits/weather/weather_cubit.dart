@@ -23,11 +23,13 @@ class WeatherCubit extends Cubit<WeatherState> {
         status: WeatherStatus.loaded,
         weather: weather,
       ));
+      print('state: $state');
     } on CustomError catch (e) {
       emit(state.copyWith(
         status: WeatherStatus.error,
         error: e,
       ));
+      print('state: $state');
     }
   }
 }
